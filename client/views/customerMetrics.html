@@ -1,0 +1,74 @@
+<div id="wrapper" class="clearfix panel-body">
+    <header id="page-header">
+        <h1>Customer Metrics</h1>
+        <div ncy-breadcrumb></div>
+    </header>
+    <div id="content" class=" metrics-header row">
+        <!-- Today's Customer's Box -->
+        <div class="col-md-6 col-sm-3" id="todays-cust">
+            <!-- BOX -->
+            <div class="box warning">
+                <!-- default, danger, warning, info, success -->
+                <div class="box-title">
+                    <!-- add .noborder class if box-body is removed -->
+                    <h4>{{ vm.todaysCustomers }}</h4>
+                    <small class="block">Today's Customers</small>
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="box-body text-center">
+                    <span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
+										331,265,456,411,367,319,402,312,300,312,283,384,372,269,402,319,416,355,416,371,423,259,361,312,269,402,327
+									</span>
+                </div>
+            </div>
+            <!-- /BOX -->
+        </div>
+        <!-- Total Customer's Box -->
+        <div class="col-md-6 col-sm-3" id="total-cust">
+            <!-- BOX -->
+            <div class="box default">
+                <!-- default, danger, warning, info, success -->
+                <div class="box-title">
+                    <!-- add .noborder class if box-body is removed -->
+                    <h4>{{ vm.totalCustomers }}</h4>
+                    <small class="block">Total Customers Served</small>
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="box-body text-center">
+                    <span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
+										331,265,456,411,367,319,402,312,300,312,283,384,372,269,402,319,416,355,416,371,423,259,361,312,269,402,327
+									</span>
+                </div>
+            </div>
+            <!-- /BOX -->
+
+        </div>
+    </div>
+    <!--date pickers-->
+    <div class="row" id="dt-pickers">
+        <h2 id="choose-date">Choose a date range</h2>
+        <hr/>
+        <div class='col-lg-12'>
+            <div>
+                <div class='fancy-form'>
+                    <i class='purchase-history-calendar-clear fa fa-close'></i>
+                    <input date-range-picker class='form-control date-picker' type='text' ng-model='vm.date' options='{eventHandlers: {"apply.daterangepicker": vm.getReservations}}'>
+                    <span class='fancy-tooltip top-right'><em>View customer metrics by date</em></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of date pickers-->
+    <!--charts-->
+    <div class="row" id="charts">
+        <div>
+            <nvd3 id="line-chart" options="vm.lineChartOptions" data="vm.lineChartData" config="{refreshDataOnly: false}" api="vm.api">
+            </nvd3>
+        </div>
+        <div>
+            <nvd3 id="pie-chart" options="vm.pieChartOptions" data="vm.pieChartData">
+            </nvd3>
+        </div>
+    </div>
+    <!--end of charts-->
+</div>
